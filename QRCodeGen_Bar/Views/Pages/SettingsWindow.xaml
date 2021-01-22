@@ -1,0 +1,160 @@
+﻿<Window
+    x:Class="QRCodeGen_Bar.Views.Pages.SettingsWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:QRCodeGen_Bar.Views.Pages"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="SettingsWindow"
+    Width="550"
+    Height="500"
+    AllowsTransparency="False"
+    Background="#263744"
+    BorderThickness="0"
+    Opacity="0.85"
+    OpacityMask="White"
+    ResizeMode="NoResize"
+    WindowStartupLocation="CenterScreen"
+    WindowStyle="None"
+    mc:Ignorable="d">
+
+    <WindowChrome.WindowChrome>
+
+        <WindowChrome
+            CaptionHeight="40"
+            CornerRadius="40"
+            GlassFrameThickness="0" />
+
+    </WindowChrome.WindowChrome>
+
+
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+
+            <RowDefinition Height="20" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="20" />
+
+        </Grid.RowDefinitions>
+
+
+        <Label
+            Grid.Row="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            BorderBrush="Transparent"
+            BorderThickness="0"
+            Content="Settings"
+            FontFamily="Bauhaus 93"
+            FontSize="32"
+            Foreground="White" />
+
+        <StackPanel Grid.Row="2" Grid.Column="0">
+
+            <Label
+                Content="UploadUrL"
+                FontSize="20"
+                Foreground="White" />
+            <TextBox
+                Margin="5"
+                Padding="10"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Center"
+                Text="{Binding Url_Upload}" />
+
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Grid.Column="0">
+
+            <Label
+                Content="WifiSSID"
+                FontSize="20"
+                Foreground="White" />
+            <TextBox
+                Margin="5"
+                Padding="10"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Center"
+                Text="{Binding WifiSSID}" />
+
+        </StackPanel>
+
+
+        <StackPanel Grid.Row="4" Grid.Column="0">
+
+            <Label
+                Content="AccessKey"
+                FontSize="20"
+                Foreground="White" />
+            <TextBox
+                Margin="5"
+                Padding="10"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Center"
+                Text="{Binding AccessKey}" />
+
+        </StackPanel>
+
+
+        <StackPanel Grid.Row="2" Grid.Column="1">
+
+            <Label
+                Content="KeyUrl"
+                FontSize="20"
+                Foreground="White" />
+            <TextBox
+                Margin="5"
+                Padding="10"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Center"
+                Text="{Binding Url_Key}" />
+
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Grid.Column="1">
+
+            <Label
+                Content="WifiPassword"
+                FontSize="20"
+                Foreground="White" />
+            <TextBox
+                Margin="5"
+                Padding="10"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Center"
+                Text="{Binding WifiPassword}" />
+
+        </StackPanel>
+
+
+        <Button
+            Grid.Row="5"
+            Grid.Column="0"
+            Command="{Binding SaveSettingsCommand}"
+            Content="Save"
+            Style="{StaticResource ButtonStyle}" />
+
+        <Button
+            Grid.Row="5"
+            Grid.Column="1"
+            Command="{Binding CloseWindowCommand}"
+            Content="Cancel"
+            Style="{StaticResource ButtonStyle}" />
+
+    </Grid>
+
+</Window>
