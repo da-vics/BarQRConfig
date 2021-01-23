@@ -32,11 +32,11 @@ namespace QRCodeGen_Bar.Models
                 ///Default PlaceHolder
                 _scannerdetails = new ScannerDetails
                 {
-                    Url_Upload = "http://192.168.43.179:80/fieldadmin/api/dataupload",
-                    Url_Key = "http://192.168.43.179:80/fieldadmin/api/RegisterFieldDevice",
-                    WifiSSID = "project",
-                    WifiPassword = "projectdev",
-                    AccessKey = "MasterKey:SMARTERDATA"
+                    Url_Upload = "UploadUrl",
+                    Url_Key = "KeyUrl",
+                    WifiSSID = "ssid",
+                    WifiPassword = "password",
+                    AccessKey = "string Name:temp"
                 };
 
                 var _serialiseobject = JsonConvert.SerializeObject(_scannerdetails, Formatting.Indented);

@@ -31,8 +31,6 @@ namespace QRCodeGen_Bar.Models
             var datetemp = DateTime.Now;
             QrName = $"{QrName}_{datetemp.Date.ToShortDateString()}_{ datetemp.Hour}_{datetemp.Minute}_{datetemp.Second}.png";
             QrName = QrName.Replace('/', '_');
-            MessageBox.Show(QrName);
-
 
             var dir = string.Empty;
 

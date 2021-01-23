@@ -4,13 +4,16 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>qr-code.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\qr-code.png" />
     <None Remove="Images\refresh-bar.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\qr-code.png" />
     <Resource Include="Images\refresh-bar.png" />
   </ItemGroup>
 

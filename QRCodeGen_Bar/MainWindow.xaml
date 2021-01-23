@@ -48,17 +48,27 @@
 
         </Grid.ColumnDefinitions>
 
-        <TextBlock
+        <StackPanel
             Grid.Row="0"
             Grid.Column="0"
             Grid.ColumnSpan="2"
             Margin="10"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            FontSize="32"
-            FontWeight="Bold"
-            Foreground="White"
-            Text="DeviceSetup" />
+            Orientation="Horizontal">
+
+            <Image Width="60" Source="../Images/qr-code.png" />
+
+            <TextBlock
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontSize="32"
+                FontWeight="Bold"
+                Foreground="White"
+                Text="DeviceSetup" />
+
+        </StackPanel>
+
 
         <StackPanel
             Grid.Row="0"
