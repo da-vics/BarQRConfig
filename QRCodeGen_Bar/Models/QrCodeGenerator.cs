@@ -12,7 +12,7 @@ namespace QRCodeGen_Bar.Models
     {
         private QRCodeGenerator qrGenerator = new QRCodeGenerator();
         private string _qrFloderName = "QRCodeImages";
-        private string QrName = "QrConfig.png";
+        private string QrName = "QrConfig";
         private System.Windows.Controls.Image _displayQrImage { get; set; }
 
         public QrCodeGenerator(System.Windows.Controls.Image displayQrImage)
@@ -27,6 +27,12 @@ namespace QRCodeGen_Bar.Models
 
             QRCode qrCode = new QRCode(qrCodeData);
             Bitmap qrCodeImage = qrCode.GetGraphic(20);
+
+            var datetemp = DateTime.Now;
+            QrName = $"{QrName}_{datetemp.Date.ToShortDateString()}_{ datetemp.Hour}_{datetemp.Minute}_{datetemp.Second}.png";
+            QrName = QrName.Replace('/', '_');
+            MessageBox.Show(QrName);
+
 
             var dir = string.Empty;
 
@@ -46,13 +52,9 @@ namespace QRCodeGen_Bar.Models
 
                 try
                 {
-                    if (File.Exists(@$"{dir}\{_qrFloderName}\{QrName}"))
-                        File.Delete(@$"{ dir}\{ _qrFloderName}\{ QrName}");
-
                     qrCodeImage.Save(@$"{dir}\{_qrFloderName}\{QrName}");
                     BitmapImage img = new BitmapImage();
                     img.BeginInit();
-                    img.CacheOption = BitmapCacheOption.OnLoad;
                     img.UriSource = new Uri(@$"{dir}\{_qrFloderName}\{QrName}");
                     img.EndInit();
                     _displayQrImage.Source = img;
@@ -83,7 +85,6 @@ namespace QRCodeGen_Bar.Models
 
                     BitmapImage img = new BitmapImage();
                     img.BeginInit();
-                    img.CacheOption = BitmapCacheOption.OnLoad;
                     img.UriSource = new Uri(@$"{dir}\{_qrFloderName}\{QrName}");
                     img.EndInit();
                     _displayQrImage.Source = img;
