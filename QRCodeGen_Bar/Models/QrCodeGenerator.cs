@@ -12,6 +12,7 @@ namespace QRCodeGen_Bar.Models
     {
         private QRCodeGenerator qrGenerator = new QRCodeGenerator();
         private string _qrFloderName = "QRCodeImages";
+        private string QrName = "QrConfig.png";
         private System.Windows.Controls.Image _displayQrImage { get; set; }
 
         public QrCodeGenerator(System.Windows.Controls.Image displayQrImage)
@@ -45,12 +46,17 @@ namespace QRCodeGen_Bar.Models
 
                 try
                 {
-                    qrCodeImage.Save(@$"{dir}\{_qrFloderName}\QrConfig.png");
+                    if (File.Exists(@$"{dir}\{_qrFloderName}\{QrName}"))
+                        File.Delete(@$"{ dir}\{ _qrFloderName}\{ QrName}");
+
+                    qrCodeImage.Save(@$"{dir}\{_qrFloderName}\{QrName}");
                     BitmapImage img = new BitmapImage();
                     img.BeginInit();
-                    img.UriSource = new Uri(@$"{dir}\{_qrFloderName}\QrConfig.png");
+                    img.CacheOption = BitmapCacheOption.OnLoad;
+                    img.UriSource = new Uri(@$"{dir}\{_qrFloderName}\{QrName}");
                     img.EndInit();
                     _displayQrImage.Source = img;
+
                     Debug.WriteLine("Image Generated!", "Successful");
 
                 }
@@ -73,11 +79,12 @@ namespace QRCodeGen_Bar.Models
                 try
                 {
                     Directory.CreateDirectory(@$"{dir}\{_qrFloderName}");
-                    qrCodeImage.Save(@$"{dir}\{_qrFloderName}\QrConfig.png");
+                    qrCodeImage.Save(@$"{dir}\{_qrFloderName}\{QrName}");
 
                     BitmapImage img = new BitmapImage();
                     img.BeginInit();
-                    img.UriSource = new Uri(@$"{dir}\{_qrFloderName}\QrConfig.png");
+                    img.CacheOption = BitmapCacheOption.OnLoad;
+                    img.UriSource = new Uri(@$"{dir}\{_qrFloderName}\{QrName}");
                     img.EndInit();
                     _displayQrImage.Source = img;
                 }

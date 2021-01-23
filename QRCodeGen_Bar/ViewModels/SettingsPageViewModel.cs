@@ -16,7 +16,6 @@ namespace QRCodeGen_Bar.ViewModels
         private ConfigFileOperations _configOperation { get; set; } = new ConfigFileOperations();
 
 #nullable enable
-
         public string? Url_Upload { get => _scannerdetails.Url_Upload; set { _scannerdetails.Url_Upload = value; } }
         public string? Url_Key { get => _scannerdetails.Url_Key; set { _scannerdetails.Url_Key = value; } }
         public string? WifiSSID { get => _scannerdetails.WifiSSID; set { _scannerdetails.WifiSSID = value; } }
@@ -26,10 +25,13 @@ namespace QRCodeGen_Bar.ViewModels
         public ICommand CloseWindowCommand { get; set; }
         public ICommand SaveSettingsCommand { get; set; }
 
-        public SettingsPageViewModel(Window window)
+        private Action _action;
+
+        public SettingsPageViewModel(Window window, Action action)
         {
+            _action = action;
             _mainWindow = window;
-            CloseWindowCommand = new CommandProp(() => _mainWindow.Close());
+            CloseWindowCommand = new CommandProp(() => { _action?.Invoke(); _mainWindow.Close(); });
             SaveSettingsCommand = new CommandProp(async () => await SaveSettings());
 
             Task.Run(async () =>
@@ -47,6 +49,8 @@ namespace QRCodeGen_Bar.ViewModels
             WifiSSID = WifiSSID?.Trim();
             WifiPassword = WifiPassword?.Trim();
             AccessKey = AccessKey?.Trim();
+
+            _action?.Invoke();
 
             await _configOperation.ModifySettings(_scannerdetails);
             _mainWindow.Close();

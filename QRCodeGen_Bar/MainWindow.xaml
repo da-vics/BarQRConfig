@@ -177,7 +177,10 @@
                 CornerRadius="10">
 
                 <Grid>
-                    <Image x:Name="QRGeneratedImage" Margin="10" />
+                    <Image
+                        x:Name="QRGeneratedImage"
+                        Margin="10"
+                        Source="{Binding imgSource, UpdateSourceTrigger=PropertyChanged}" />
                 </Grid>
 
             </Border>

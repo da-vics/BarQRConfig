@@ -7,10 +7,10 @@ namespace QRCodeGen_Bar.Views.Pages
 
     public partial class SettingsWindow : Window
     {
-        public SettingsWindow()
+        public SettingsWindow(Action action)
         {
             InitializeComponent();
-            DataContext = new SettingsPageViewModel(this);
+            DataContext = new SettingsPageViewModel(this, action);
         }
     }
 }

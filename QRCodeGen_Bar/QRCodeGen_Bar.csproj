@@ -7,6 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\refresh-bar.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\refresh-bar.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Fody" Version="6.3.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -18,10 +26,6 @@
     <PackageReference Include="Syncfusion.Licensing" Version="18.4.0.35" />
     <PackageReference Include="Syncfusion.SfBusyIndicator.WPF" Version="18.4.0.35" />
     <PackageReference Include="Syncfusion.SfInput.WPF" Version="18.4.0.35" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Images\" />
   </ItemGroup>
 
 </Project>
